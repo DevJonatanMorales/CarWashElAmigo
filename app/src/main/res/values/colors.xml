@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- colores infor -->
+    <color name="backgroundColor">#D6E2F0</color>
+    <color name="fondo">#0544E6</color>
+    <color name="backgroundBtn1">#0439BF</color>
+    <color name="backgroundBtn">#032680</color>
+    <color name="barra">#032680</color>
+    <color name="barraName">#011340</color>
+    <!-- colores infor -->
+    <color name="alerta">#DC3848</color>
+    <color name="info">#17A2B8</color>
+    <color name="advertencia">#FFC107</color>
+    <color name="exito">#28A745</color>
+    <!-- otros -->
+    <color name="gris">#064EFE</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>
