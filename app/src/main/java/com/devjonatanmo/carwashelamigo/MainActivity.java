@@ -14,11 +14,11 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     //dase de datos
-    BaseDatos objRegistro;
     private Cursor fila;
 
     //activity
@@ -75,26 +75,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //buscamos la placa en la bd
+
     private void BuscarPlaca(String numPlaca) {
         //obtenemos la fecha
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         strDate = sdf.format(c.getTime());
 
+        BaseDatos root = new BaseDatos (MainActivity.this,"CarWash",null,1);
+        SQLiteDatabase BaseDatos = root.getWritableDatabase();
+
         try {
-            BaseDatos root = new BaseDatos (this,"registro",null,1);
-            SQLiteDatabase BaseDatos = root.getWritableDatabase();
 
-            fila = BaseDatos.rawQuery("SELECT idplaca, placa, contador FROM t_registro_placa WHERE t_registro_placa.placa='"+ numPlaca +"'", null);
+            fila = BaseDatos.rawQuery("SELECT id_placa, placa, contador, fecha FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa WHERE t_placa.placa='"+ numPlaca +"'", null);
 
-            if (fila.moveToFirst()==true) {
+            if (fila.moveToFirst()) {
                 idPlaca = fila.getInt(0);
                 placa = fila.getString(1);
                 contador = fila.getInt(2);
 
                 if (numPlaca.equals(placa)){
-
-                    //placaInfo = "Número de placa: " + placa + "\n fecha: " + strDate + "\n";
 
                     if (contador == 5) {
                         accion = "reset";
@@ -102,16 +102,13 @@ public class MainActivity extends AppCompatActivity {
                         accion = "update";
                     }
 
-                    //obtenemor el historial de lavado
-                    fila = BaseDatos.rawQuery("SELECT fecha FROM t_historial_lavados WHERE fk_placa='"+ idPlaca +"'", null);
                     String hsitorial = "";
-                    while(fila.moveToFirst()==true){
-                        hsitorial = fila.getString(0);
-                    }
-                    placaInfo = "Número de placa: " + placa + "\n fecha: " + strDate + "\n registro" + hsitorial;
+                    hsitorial = fila.getString(3);
+                    placaInfo = "Número de placa: " + placa + "\nfecha: " + strDate + "\nhistorial: " + hsitorial;
 
                 }
             } else {
+                placa = numPlaca;
                 placaInfo = "Número de placa: " + numPlaca + "\n" + //agregamos la descripcion
                     "placa sin historial \nfecha: " + strDate;
             }
@@ -124,15 +121,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void EnviarDatos () {
-        Intent intent = new Intent( MainActivity.this, Factura.class);
+        try {
+            Intent intent = new Intent( MainActivity.this, Factura.class);
 
-        intent.putExtra("numPlaca", placa);
-        intent.putExtra("idPlaca", idPlaca);
-        intent.putExtra("placaInfo", placaInfo);
-        intent.putExtra("accion", accion);
-        intent.putExtra("contador", contador);
-        intent.putExtra("nuencaFecha", strDate);
+            intent.putExtra("numPlaca", placa);
+            intent.putExtra("idPlaca", idPlaca);
+            intent.putExtra("placaInfo", placaInfo);
+            intent.putExtra("accion", accion);
+            intent.putExtra("contador", contador);
+            intent.putExtra("nuencaFecha", strDate);
 
-        startActivity(intent);
+            startActivity(intent);
+        } catch (Exception ex) {
+            Toast.makeText(getApplicationContext(),"Error al enviar: " + ex.getMessage().toString(), Toast.LENGTH_LONG).show();
+        }
     }
 }

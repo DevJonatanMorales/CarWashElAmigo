@@ -6,23 +6,31 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BaseDatos extends SQLiteOpenHelper {
 
-    public static final String db_CarWash = "registro";//mi base de datos...
+    public static final String db_CarWash = "CarWash";//mi base de datos...
     public static final int v = 1;//versionado de la bd
 
-    String resgistro_placa = "CREATE TABLE IF NOT EXISTS t_registro_placa " +
-            "(idplaca INTEGER PRIMARY KEY AUTOINCREMENT," +
+    String Tabla_placa ="t_placa";
+    String Tabla_historial ="t_historial";
+
+    String resgistro_placa = "CREATE TABLE IF NOT EXISTS " + Tabla_placa +
+            "(id_placa INTEGER PRIMARY KEY AUTOINCREMENT," +
             "placa text, contador integer)";
 
-    String historias_lavados = "CREATE TABLE IF NOT EXISTS t_historial_lavados (" +
+    String historias_lavados = "CREATE TABLE IF NOT EXISTS " + Tabla_historial + " (" +
+            "id_historial INTEGER PRIMARY KEY AUTOINCREMENT," +
             " fk_placa integer, " +
             " fecha data, " +
             " precio integer, " +
             " descuento integer, " +
             " total integer," +
-            "FOREIGN KEY (fk_placa) REFERENCES resgistro_placa (idplaca) ON DELETE CASCADE ON UPDATE NO ACTION)";
+            "FOREIGN KEY (fk_placa) REFERENCES t_placa (id_placa) ON DELETE CASCADE ON UPDATE NO ACTION)";
 
     public BaseDatos(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, db_CarWash, factory, v);
@@ -50,7 +58,7 @@ public class BaseDatos extends SQLiteOpenHelper {
             contentValues.put("placa", numPlaca);
             contentValues.put("contador", contador);
 
-            lastId = db.insert("t_registro_placa", null, contentValues);
+            lastId = db.insert("t_placa", null, contentValues);
 
         } catch (Exception ex) {
             ex.toString();
@@ -60,63 +68,67 @@ public class BaseDatos extends SQLiteOpenHelper {
     }
 
 
-    public String InsertHistory (int fk_placa, String fecha, String precio, String descuento, String total) {
+    public Boolean InsertHistory (int fk_placa, String fecha, String precio, String descuento, String total) {
 
         SQLiteDatabase db = getWritableDatabase();
 
         boolean correcto = false;
-        String alert = "sin errores";
 
         try {
-            db.execSQL("INSERT INTO t_historial_lavados(fk_placa, fecha, precio, descuento, total) VALUES (" + fk_placa + ", '" + fecha + "', '" + precio + "', '" + descuento + "', '" + total + "')");
+            db.execSQL("INSERT INTO " + Tabla_historial + "(fk_placa, fecha, precio, descuento, total) VALUES (" + fk_placa + ", '" + fecha + "', '" + precio + "', '" + descuento + "', '" + total + "')");
             correcto = true;
         } catch (Exception ex) {
-            alert = ex.toString();
+            ex.toString();
             correcto = false;
         } finally {
             db.close();
         }
 
-        return alert;
+        return correcto;
     }
 
-    public String  UpdateContador (int id, int contador) {
+    public Boolean  UpdateContador (int id, int contador) {
 
         SQLiteDatabase db = getWritableDatabase();
 
         boolean correcto = false;
-        String alert = "sin errores";
 
         try {
-            db.execSQL("UPDATE t_resgistro_placa SET contador = '" + contador +  "' WHERE id='" + id + "' ");
+            db.execSQL("UPDATE " + Tabla_placa + " SET contador = " + contador +  " WHERE id_placa= " + id);
             correcto = true;
         } catch (Exception ex) {
-            alert = ex.toString();
+            ex.toString();
             correcto = false;
         } finally {
             db.close();
         }
 
-        return alert;
+        return correcto;
     }
 
-    public String ClearHistory(int id) {
+    public Boolean ClearHistory(int id) {
 
         boolean correcto = false;
-        String alert = "sin errores";
 
         SQLiteDatabase db = getWritableDatabase();
 
         try {
-            db.execSQL("DELETE FROM t_historias_lavados WHERE fk_placa = '" + id + "'");
+            db.execSQL("DELETE FROM " + Tabla_historial + " WHERE fk_placa = '" + id + "'");
             correcto = true;
         } catch (Exception ex) {
-            alert = ex.toString();
+            ex.toString();
             correcto = false;
         } finally {
             db.close();
         }
 
-        return alert;
+        return correcto;
     }
+
+    public Cursor ObtenerHistorial(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT t_placa.placa, t_placa.contador, t_historial.fecha, t_historial.total FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa", null);
+        return cursor;
+    }
+
 }
