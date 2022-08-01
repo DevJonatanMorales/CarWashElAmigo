@@ -83,29 +83,33 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             BaseDatos root = new BaseDatos (this,"registro",null,1);
-            SQLiteDatabase db = root.getWritableDatabase();
+            SQLiteDatabase BaseDatos = root.getWritableDatabase();
 
-            fila = db.rawQuery("SELECT idplaca, placa, contador FROM t_registro_placa WHERE placa='"+ numPlaca +"'", null);
+            fila = BaseDatos.rawQuery("SELECT idplaca, placa, contador FROM t_registro_placa WHERE t_registro_placa.placa='"+ numPlaca +"'", null);
 
             if (fila.moveToFirst()==true) {
-                while(fila.moveToFirst()==true){
-                    idPlaca = fila.getInt(0);
-                    placa = fila.getString(1);
-                    contador = fila.getInt(2);
+                idPlaca = fila.getInt(0);
+                placa = fila.getString(1);
+                contador = fila.getInt(2);
 
-                    if (numPlaca.equals(placa)){
-                        Intent ver = new Intent(this, Factura.class);
-                        startActivity(ver);
+                if (numPlaca.equals(placa)){
 
-                        if (contador == 5) {
-                            accion = "reset";
-                        } else {
-                            accion = "update";
-                        }
+                    //placaInfo = "Número de placa: " + placa + "\n fecha: " + strDate + "\n";
 
-                    }else{
-                        Toast.makeText(getApplicationContext(),"Cometio un error intente de nuevo",Toast.LENGTH_LONG).show();
+                    if (contador == 5) {
+                        accion = "reset";
+                    } else {
+                        accion = "update";
                     }
+
+                    //obtenemor el historial de lavado
+                    fila = BaseDatos.rawQuery("SELECT fecha FROM t_historial_lavados WHERE fk_placa='"+ idPlaca +"'", null);
+                    String hsitorial = "";
+                    while(fila.moveToFirst()==true){
+                        hsitorial = fila.getString(0);
+                    }
+                    placaInfo = "Número de placa: " + placa + "\n fecha: " + strDate + "\n registro" + hsitorial;
+
                 }
             } else {
                 placaInfo = "Número de placa: " + numPlaca + "\n" + //agregamos la descripcion
