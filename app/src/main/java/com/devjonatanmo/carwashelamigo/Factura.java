@@ -60,7 +60,7 @@ public class Factura extends AppCompatActivity {
                 precio = Integer.parseInt(etxtPrecio.getText().toString());
 
                 try {
-                    if (_contador == 3) {
+                    if (_accion == "reset") {
                         txtTotal.setText("Total a pagar: lavado gratis" );
                         etxtPrecio.setText("0.00");
                         etxtDescuento.setText("0.00");
