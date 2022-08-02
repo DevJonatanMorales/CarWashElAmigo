@@ -87,14 +87,16 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            fila = BaseDatos.rawQuery("SELECT id_placa, placa, contador, fecha FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa WHERE t_placa.placa='"+ numPlaca +"'", null);
-
-            if (fila.moveToFirst()) {
+            //fila = BaseDatos.rawQuery("SELECT id_placa, placa, contador, fecha FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa WHERE t_placa.placa='"+ numPlaca +"'", null);
+            fila = BaseDatos.rawQuery("SELECT id_placa, placa, contador, fecha " +
+                    "FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa " +
+                    "WHERE t_placa.placa='"+ numPlaca +"'", null);
+            if (fila.moveToFirst() == true) {
                 idPlaca = fila.getInt(0);
                 placa = fila.getString(1);
                 contador = fila.getInt(2);
 
-                if (numPlaca.equals(placa)){
+                if (numPlaca.equals(placa)) {
 
                     if (contador == 5) {
                         accion = "reset";
@@ -102,11 +104,26 @@ public class MainActivity extends AppCompatActivity {
                         accion = "update";
                     }
 
-                    String hsitorial = "";
-                    hsitorial = fila.getString(3);
-                    placaInfo = "Número de placa: " + placa + "\nfecha: " + strDate + "\nhistorial: " + hsitorial;
+                    String historial = "";
+                    int item = 0;
+
+                    for (int i = 1; i <= fila.getCount(); i++ ){
+                        if (item == 0) {
+                            historial += "\nfecha de lavado: " + fila.getString(3);
+                            item = 1;
+
+                        }else if (fila.moveToNext()) {
+                            historial += "\nfecha de lavado: " + fila.getString(3);
+
+                        }
+
+                    }
+
+
+                    placaInfo = "Número de placa: " + placa + "\nfecha: " + strDate + "\nhistorial: " + historial;
 
                 }
+
             } else {
                 placa = numPlaca;
                 placaInfo = "Número de placa: " + numPlaca + "\n" + //agregamos la descripcion

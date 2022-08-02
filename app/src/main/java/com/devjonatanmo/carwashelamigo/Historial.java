@@ -36,8 +36,7 @@ public class Historial extends AppCompatActivity {
                         (this, android.R.layout.simple_list_item_1,alContactos);
                 ltsAgenda.setAdapter(adContactos);
                 do{
-                    alContactos.add("Número de placa: " + misDatos.getString(0) + "\nfecha: " + misDatos.getString(2) + "\npago: $" + misDatos.getString(3) + "\nlavados: " + misDatos.getString(1));
-                }while( misDatos.moveToNext() );
+                    alContactos.add("Número de placa: " + misDatos.getString(0) + "\nfecha de lavado: " + misDatos.getString(2) + "\npago $: " + misDatos.getString(3));                }while( misDatos.moveToNext() );
                 adContactos.notifyDataSetChanged();
                 registerForContextMenu(ltsAgenda);//registra la lista
             }else{

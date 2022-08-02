@@ -60,7 +60,7 @@ public class Factura extends AppCompatActivity {
                 precio = Integer.parseInt(etxtPrecio.getText().toString());
 
                 try {
-                    if (_accion == "reset") {
+                    if (_contador == 5) {
                         txtTotal.setText("Total a pagar: lavado gratis" );
                         etxtPrecio.setText("0.00");
                         etxtDescuento.setText("0.00");
@@ -134,23 +134,15 @@ public class Factura extends AppCompatActivity {
             case "update":
 
                 _contador += 1;
-                //Toast.makeText(this, "contador: " + _contador + ", id " + _id, Toast.LENGTH_LONG).show();
 
                 if (objRegistro.UpdateContador(_id, _contador) == true) {
 
-                    if (objRegistro.ClearHistory(_id) == true) {
-
-
-                        if (objRegistro.InsertHistory(_id, _fechaActual, strPrecio, strDescuento, strTotal) == true) {
-                            ClearData();
-                            Toast.makeText(this, "Guardado con exito al actualizar", Toast.LENGTH_LONG).show();
-
-                        } else {
-                            Toast.makeText(this, "Error al guardar historial", Toast.LENGTH_LONG).show();
-                        }
+                    if (objRegistro.InsertHistory(_id, _fechaActual, strPrecio, strDescuento, strTotal) == true) {
+                        ClearData();
+                        Toast.makeText(this, "Guardado con exito al actualizar", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(this, "Error al guardar", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Error al guardar historial", Toast.LENGTH_LONG).show();
                     }
                 }
 
