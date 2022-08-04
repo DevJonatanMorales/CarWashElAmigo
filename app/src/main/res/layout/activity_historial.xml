@@ -9,77 +9,41 @@
     tools:context=".Historial">
 
 
-    <ScrollView
+    <EditText
+        android:id="@+id/editTextDate"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/barraName"
+        android:ems="10"
+        android:hint="@string/txtFecha"
+        android:inputType="textPersonName"
+        android:textSize="20dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <Button
+        android:id="@+id/btnFiltrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="12dp"
+        android:text="@string/btnFiltrar"
+        android:textSize="20dp"
+        app:backgroundTint="@color/backgroundBtn"
+        app:icon="@drawable/icon_filter"
+        app:iconGravity="textStart"/>
 
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/barraName"
-                android:ems="10"
-                android:hint="@string/txtFecha"
-                android:inputType="date"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:padding="12dp"
-                android:text="@string/btnFiltrar"
-                android:textSize="20dp"
-                app:backgroundTint="@color/backgroundBtn"
-                app:icon="@drawable/icon_filter"
-                app:iconGravity="textStart" />
-
-
-            <TextView
-                android:id="@+id/lblTOtal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Total: $0.00"
-                android:textAlignment="center"
-                android:textColor="@color/barraName"
-                android:textSize="20dp" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-                    <ListView
-                        android:id="@+id/ltsAgenda"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_margin="10dp"
-                        android:background="@color/white"
-                        android:textColor="@color/barraName"
-                        android:textSize="20dp" />
-                </LinearLayout>
-            </ScrollView>
-
-        </LinearLayout>
-
-    </ScrollView>
+    <ListView
+        android:id="@+id/ltsAgenda"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:textColor="@color/barraName"
+        android:textSize="20dp" />
 
 </LinearLayout>

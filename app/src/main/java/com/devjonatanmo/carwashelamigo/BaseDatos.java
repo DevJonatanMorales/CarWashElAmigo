@@ -125,10 +125,18 @@ public class BaseDatos extends SQLiteOpenHelper {
         return correcto;
     }
 
-    public Cursor ObtenerHistorial(){
+    public Cursor MostrarHistorial(){
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT t_placa.placa, t_placa.contador, t_historial.fecha, t_historial.total FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa", null);
         return cursor;
     }
+
+    public Cursor BuscarHistorial(String buscar_fecha){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT t_placa.placa, t_placa.contador, t_historial.fecha, t_historial.total FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa WHERE t_historial.fecha LIKE '%"+ buscar_fecha +"%'", null);
+        return cursor;
+    }
+
+
 
 }
