@@ -2,7 +2,6 @@ package com.devjonatanmo.carwashelamigo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Historial extends AppCompatActivity {
     BaseDatos objRegistro;
@@ -48,7 +45,6 @@ public class Historial extends AppCompatActivity {
             }
         });
     }
-
 
     private void MostrarHistorial() {
         try{
