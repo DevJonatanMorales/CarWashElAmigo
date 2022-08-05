@@ -1,16 +1,8 @@
 <resources>
     <string name="app_name">Car Wash EL Amigo</string>
     <!-- main -->
-    <string name="btnCobro">Escanear placa</string>
+    <string name="btnCobro">Escanear</string>
     <string name="btnHistorial">Historial</string>
-
-    <!-- iniciar sesion -->
-    <string name="lblIniciar">INICIAR SESIÓN</string>
-    <string name="lblUsuario">USUARIO:</string>
-    <string name="lblInfoUsuario">Ingrese su usuario</string>
-    <string name="lblClave">CONTRASEÑA:</string>
-    <string name="lblInfoClave">Ingrese su contraseña</string>
-    <string name="btnIngresar">INGRESAR</string>
 
     <!-- historial -->
     <string name="btnFiltrar">Filtrar</string>
@@ -27,4 +19,12 @@
     <string name="btnCalcular">Calcular Pago</string>
     <string name="btnGuardar">Guardar</string>
     <string name="btnImprimir">Imprimir</string>
+
+    <!-- Escanear -->
+    <string name="btnAutomatico">Automatico</string>
+    <string name="btnManual">Manual</string>
+
+    <!-- Escanear Manual -->
+    <string name="txtPlaca">Ingrese el número de placa</string>
+    <string name="btnPlaca">Buscar</string>
 </resources>

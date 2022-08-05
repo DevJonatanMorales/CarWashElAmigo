@@ -70,7 +70,7 @@ public class EscaneoAuntomatico extends AppCompatActivity {
     private void BuscarPlaca(String numPlaca) {
         //obtenemos la fecha
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         strDate = sdf.format(c.getTime());
 
         BaseDatos root = new BaseDatos (EscaneoAuntomatico.this,"CarWash",null,1);
