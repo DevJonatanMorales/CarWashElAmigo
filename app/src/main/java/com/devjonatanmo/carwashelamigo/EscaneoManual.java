@@ -39,10 +39,11 @@ public class EscaneoManual extends AppCompatActivity {
                 String numPlaca;
 
                 numPlaca = txtPlaca.getText().toString();
-                if (numPlaca != null) {
-                    BuscarPlaca(numPlaca);
+                if (numPlaca.isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"Por favor ingrese un número de placa", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(),"Por favor ingrese un numero de placa", Toast.LENGTH_LONG).show();
+                    BuscarPlaca(numPlaca);
+
                 }
             }
         });

@@ -10,14 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWashELAmigo">
         <activity
-            android:name=".EscaneoAuntomatico"
-            android:exported="true" />
-        <activity
             android:name=".EscaneoManual"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".EscanearPlaca">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EscanearPlaca" />
+        </activity>
         <activity
             android:name=".EscanearPlaca"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".Factura"
             android:exported="true"

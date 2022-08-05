@@ -52,37 +52,42 @@ public class Factura extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Error al recibir datos: " + ex.getMessage().toString(), Toast.LENGTH_LONG).show();
         }
 
-        btnCalcular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                float precio, descuento, decuentoFracion, totalDescuento, totalInt;
-                descuento = Integer.parseInt(etxtDescuento.getText().toString());
-                precio = Integer.parseInt(etxtPrecio.getText().toString());
+        try {
+            btnCalcular.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    float precio, descuento, decuentoFracion, totalDescuento, totalInt;
+                    descuento = Integer.parseInt(etxtDescuento.getText().toString());
+                    precio = Integer.parseInt(etxtPrecio.getText().toString());
 
-                try {
-                    if (_contador == 5) {
-                        txtTotal.setText("Total a pagar: lavado gratis" );
-                        etxtPrecio.setText("0.00");
-                        etxtDescuento.setText("0.00");
+                    try {
+                        if (_contador == 5) {
+                            txtTotal.setText("Total a pagar: lavado gratis" );
+                            etxtPrecio.setText("0.00");
+                            etxtDescuento.setText("0.00");
 
-                        strPrecio = "0.00";
-                        strDescuento = "0.00";
-                        strTotal = "lavado gratis";
-                    }else if (descuento > 0 || precio > 0) {
-                        decuentoFracion = descuento / 100;
-                        totalDescuento = precio * decuentoFracion;
-                        totalInt = precio - totalDescuento;
-                        strTotal = String.valueOf(totalInt);
-                        txtTotal.setText("Total a pagar: " + totalInt );
-                    } else {
-                        Toast.makeText(Factura.this, "Por favor complete los campos", Toast.LENGTH_LONG).show();
+                            strPrecio = "0.00";
+                            strDescuento = "0.00";
+                            strTotal = "lavado gratis";
+                        }else if (descuento == 0 || precio > 0) {
+                            decuentoFracion = descuento / 100;
+                            totalDescuento = precio * decuentoFracion;
+                            totalInt = precio - totalDescuento;
+                            strTotal = String.valueOf(totalInt);
+                            txtTotal.setText("Total a pagar: " + totalInt );
+                        } else {
+                            Toast.makeText(Factura.this, "Por favor complete los campos", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (Exception ex) {
+                        Toast.makeText(Factura.this, "Error " + ex.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception ex) {
-                    Toast.makeText(Factura.this, "Error " + ex.getMessage().toString(), Toast.LENGTH_LONG).show();
-                }
 
-            }
-        });
+                }
+            });
+        } catch (Exception ex) {
+            Toast.makeText(Factura.this, "Error btn " + ex.getMessage().toString(), Toast.LENGTH_LONG).show();
+        }
+
 
         try {
             btnGuardar.setOnClickListener(new View.OnClickListener() {
