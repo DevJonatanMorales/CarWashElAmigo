@@ -8,32 +8,38 @@
     android:orientation="vertical"
     tools:context=".EscaneoManual">
 
-
-    <EditText
-        android:id="@+id/txtPlaca"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/barraName"
-        android:ems="10"
-        android:hint="@string/txtPlaca"
-        android:inputType="textPersonName"
-        android:textSize="20dp" />
+        android:background="@drawable/fondo_etxt"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txtPlaca"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="5dp"
+            android:ems="10"
+            android:hint="@string/txtPlaca"
+            android:textSize="20dp"
+            android:inputType="textPersonName" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnPlaca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:padding="12dp"
         android:text="@string/btnPlaca"
         android:textSize="20dp"
-        app:backgroundTint="@color/backgroundBtn"
-        app:iconGravity="textStart"/>
+        android:background="@drawable/styles_btn"
+        app:backgroundTint="@color/Azul" />
 
 </LinearLayout>

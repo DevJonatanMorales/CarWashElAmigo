@@ -8,7 +8,6 @@
     android:background="@color/backgroundColor"
     tools:context=".Factura">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,16 +17,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtInfoPlaca"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
-                android:text="Placa info"
-                android:textColor="@color/barraName"
-                android:textSize="20dp" />
+                android:background="@drawable/fondo_etxt"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtInfoPlaca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Placa info"
+                    android:textColor="@color/barraName"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView4"
@@ -38,18 +46,29 @@
                 android:layout_marginEnd="10dp"
                 android:text="@string/txtPrecio"
                 android:textColor="@color/barraName"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etxtPrecio"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:ems="10"
-                android:hint="@string/etxtPrecio"
-                android:inputType="numberDecimal" />
+                android:background="@drawable/fondo_etxt"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etxtPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"
+                    android:ems="10"
+                    android:hint="@string/etxtPrecio"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView5"
@@ -60,18 +79,29 @@
                 android:layout_marginEnd="10dp"
                 android:text="@string/txtDescuento"
                 android:textColor="@color/barraName"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etxtDescuento"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:ems="10"
-                android:hint="@string/etxtDecueno"
-                android:inputType="number"  />
+                android:background="@drawable/fondo_etxt"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etxtDescuento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="20dp"
+                    android:ems="10"
+                    android:hint="@string/etxtDecueno"
+                    android:inputType="number" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/txtTotal"
@@ -82,7 +112,8 @@
                 android:layout_marginEnd="10dp"
                 android:text="@string/etxtTotal"
                 android:textColor="@color/barraName"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnCalcular"
@@ -94,9 +125,8 @@
                 android:padding="12dp"
                 android:text="@string/btnCalcular"
                 android:textSize="20dp"
-                app:backgroundTint="@color/backgroundBtn"
-                app:icon="@drawable/icon_dollar"
-                android:gravity="left|center_vertical" />
+                android:background="@drawable/styles_btn"
+                app:backgroundTint="@color/Azul" />
 
             <Button
                 android:id="@+id/btnGuardar"
@@ -108,9 +138,8 @@
                 android:padding="12dp"
                 android:text="@string/btnGuardar"
                 android:textSize="20dp"
-                android:gravity="left|center_vertical"
-                app:backgroundTint="@color/backgroundBtn"
-                app:icon="@drawable/icon_save" />
+                android:background="@drawable/styles_btn"
+                app:backgroundTint="@color/Azul" />
 
             <Button
                 android:id="@+id/btnImprimir"
@@ -119,12 +148,12 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="30dp"
                 android:padding="12dp"
                 android:text="@string/btnImprimir"
                 android:textSize="20dp"
-                android:gravity="left|center_vertical"
-                app:backgroundTint="@color/backgroundBtn"
-                app:icon="@drawable/icon_print" />
+                android:background="@drawable/styles_btn"
+                app:backgroundTint="@color/Azul"/>
         </LinearLayout>
 
     </ScrollView>

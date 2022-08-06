@@ -7,13 +7,11 @@
     <color name="backgroundBtn">#032680</color>
     <color name="barra">#032680</color>
     <color name="barraName">#011340</color>
-    <!-- colores infor -->
-    <color name="alerta">#DC3848</color>
-    <color name="info">#17A2B8</color>
-    <color name="advertencia">#FFC107</color>
-    <color name="exito">#28A745</color>
     <!-- otros -->
-    <color name="gris">#064EFE</color>
+    <color name="rojo">#DC3545</color>
     <color name="white">#FFFFFF</color>
-    <color name="black">#FF000000</color>
+    <color name="gris">#F2F4F5</color>
+    <color name="AzulPlalido">#064EFE</color>
+    <color name="Azul">#2F5597</color>
+    <color name="Azulnegro">#032680</color>
 </resources>

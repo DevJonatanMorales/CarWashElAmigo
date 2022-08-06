@@ -8,40 +8,48 @@
     android:orientation="vertical"
     tools:context=".Historial">
 
-
-    <EditText
-        android:id="@+id/editTextDate"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/barraName"
-        android:ems="10"
-        android:hint="@string/txtFecha"
-        android:inputType="textPersonName"
-        android:textSize="20dp" />
+        android:background="@drawable/fondo_etxt"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txtFecha"
+            android:textColor="@color/barraName"
+            android:inputType="textPersonName"
+            android:textSize="20dp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnFiltrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:padding="12dp"
         android:text="@string/btnFiltrar"
         android:textSize="20dp"
-        app:backgroundTint="@color/backgroundBtn"
-        app:icon="@drawable/icon_filter"
-        app:iconGravity="textStart"/>
+        android:background="@drawable/styles_btn"
+        app:backgroundTint="@color/Azul" />
 
     <ListView
         android:id="@+id/ltsAgenda"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/white"
         android:textColor="@color/barraName"
         android:textSize="20dp" />
