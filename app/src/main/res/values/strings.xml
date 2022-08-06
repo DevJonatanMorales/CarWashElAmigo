@@ -27,4 +27,8 @@
     <!-- Escanear Manual -->
     <string name="txtPlaca">Ingrese el número de placa</string>
     <string name="btnPlaca">Buscar</string>
+
+    <string name="prueba">
+        fecha de lavado: 2022-08-02 21:15
+        </string>
 </resources>

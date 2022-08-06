@@ -125,18 +125,69 @@ public class BaseDatos extends SQLiteOpenHelper {
         return correcto;
     }
 
-    public Cursor MostrarHistorial(){
+    public ArrayList<Registro> mostrar_registro() {
+
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT t_placa.placa, t_placa.contador, t_historial.fecha, t_historial.total FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa", null);
-        return cursor;
+
+        String sql = "";
+
+        sql = "SELECT t_placa.placa, t_historial.fecha, t_historial.total " +
+                " FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa";
+
+
+        ArrayList<Registro> listaRegistro = new ArrayList<>();
+        Registro registro = null;
+        Cursor cursor_registro = null;
+
+        cursor_registro = db.rawQuery(sql, null);
+
+        if (cursor_registro.moveToFirst()) {
+
+            do {
+                registro = new Registro();
+                registro.setNumPlaca(cursor_registro.getString(0));
+                registro.setFecha(cursor_registro.getString(1));
+                registro.setPago(cursor_registro.getString(2));
+                listaRegistro.add(registro);
+            } while (cursor_registro.moveToNext());
+
+        }
+
+        cursor_registro.close();
+        return listaRegistro;
     }
 
-    public Cursor BuscarHistorial(String buscar_fecha){
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT t_placa.placa, t_placa.contador, t_historial.fecha, t_historial.total FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa WHERE t_historial.fecha LIKE '%"+ buscar_fecha +"%'", null);
-        return cursor;
-    }
+    public ArrayList<Registro> filtar_registro(String buscar_fecha) {
 
+        SQLiteDatabase db = getReadableDatabase();
+        String sql = "";
+
+        sql = "SELECT t_placa.placa, t_historial.fecha, t_historial.total " +
+                " FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa " +
+                "WHERE t_historial.fecha LIKE '%" + buscar_fecha + "%'";
+
+
+        ArrayList<Registro> listaRegistro = new ArrayList<>();
+        Registro registro = null;
+        Cursor cursor_registro = null;
+
+        cursor_registro = db.rawQuery(sql, null);
+
+        if (cursor_registro.moveToFirst()) {
+
+            do {
+                registro = new Registro();
+                registro.setNumPlaca(cursor_registro.getString(0));
+                registro.setFecha(cursor_registro.getString(1));
+                registro.setPago(cursor_registro.getString(2));
+                listaRegistro.add(registro);
+            } while (cursor_registro.moveToNext());
+
+        }
+
+        cursor_registro.close();
+        return listaRegistro;
+    }
 
 
 }

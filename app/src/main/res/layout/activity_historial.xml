@@ -42,16 +42,25 @@
         android:background="@drawable/styles_btn"
         app:backgroundTint="@color/Azul" />
 
-    <ListView
-        android:id="@+id/ltsAgenda"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="8dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="30dp"
-        android:background="@color/white"
-        android:textColor="@color/barraName"
-        android:textSize="20dp" />
+        android:background="@drawable/fondo_recycler_view"
+        android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    </LinearLayout>
+
 
 </LinearLayout>

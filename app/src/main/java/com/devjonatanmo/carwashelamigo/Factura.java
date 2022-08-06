@@ -144,7 +144,7 @@ public class Factura extends AppCompatActivity {
 
                     if (objRegistro.InsertHistory(_id, _fechaActual, strPrecio, strDescuento, strTotal) == true) {
                         ClearData();
-                        Toast.makeText(this, "Guardado con exito al actualizar", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
 
                     } else {
                         Toast.makeText(this, "Error al guardar historial", Toast.LENGTH_LONG).show();
@@ -160,7 +160,7 @@ public class Factura extends AppCompatActivity {
 
                     if (objRegistro.ClearHistory(_id) == true) {
                         if (objRegistro.InsertHistory(_id, _fechaActual, strPrecio, strDescuento, strTotal) == true) {
-                            Toast.makeText(this, "Guardado con exito reiniciar", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
                             ClearData();
                         } else {
                             Toast.makeText(this, "Error al guardar", Toast.LENGTH_LONG).show();
