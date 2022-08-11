@@ -189,5 +189,33 @@ public class BaseDatos extends SQLiteOpenHelper {
         return listaRegistro;
     }
 
+    public Double total_lavados(String fecha) {
+        Double total = 0.0;
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor fila = null;
+
+        int item = 0;
+        String sql = "";
+
+        sql = "SELECT t_historial.total " +
+                " FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa " +
+                "WHERE t_historial.fecha LIKE '%" + fecha + "%' AND t_placa.contador > 0";
+
+        fila = db.rawQuery(sql, null);
+
+        if (fila.moveToFirst() == true) {
+
+            do {
+
+                total += Double.parseDouble(fila.getString(0));
+
+            } while (fila.moveToNext());
+
+        }
+
+        return total;
+    }
+
 
 }

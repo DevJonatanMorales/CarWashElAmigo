@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Placa info"
-                    android:textColor="@color/barraName"
+                    android:textColor="@color/BarraName"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -45,7 +45,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/txtPrecio"
-                android:textColor="@color/barraName"
+                android:textColor="@color/BarraName"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -78,7 +78,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/txtDescuento"
-                android:textColor="@color/barraName"
+                android:textColor="@color/BarraName"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -111,7 +111,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/etxtTotal"
-                android:textColor="@color/barraName"
+                android:textColor="@color/BarraName"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -126,7 +126,7 @@
                 android:text="@string/btnCalcular"
                 android:textSize="20dp"
                 android:background="@drawable/styles_btn"
-                app:backgroundTint="@color/Azul" />
+                app:backgroundTint="@color/c_segundario" />
 
             <Button
                 android:id="@+id/btnGuardar"
@@ -139,7 +139,7 @@
                 android:text="@string/btnGuardar"
                 android:textSize="20dp"
                 android:background="@drawable/styles_btn"
-                app:backgroundTint="@color/Azul" />
+                app:backgroundTint="@color/c_segundario" />
 
             <Button
                 android:id="@+id/btnImprimir"
@@ -153,7 +153,7 @@
                 android:text="@string/btnImprimir"
                 android:textSize="20dp"
                 android:background="@drawable/styles_btn"
-                app:backgroundTint="@color/Azul"/>
+                app:backgroundTint="@color/c_segundario"/>
         </LinearLayout>
 
     </ScrollView>

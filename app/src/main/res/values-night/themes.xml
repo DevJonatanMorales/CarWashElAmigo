@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.CarWashELAmigo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/barraName</item>
-        <item name="colorPrimaryVariant">@color/barra</item>
+        <item name="colorPrimary">@color/BarraName</item>
+        <item name="colorPrimaryVariant">@color/Barra</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/gris</item>
+        <item name="colorSecondary">@color/c_primario</item>
         <item name="colorSecondaryVariant">@color/white</item>
-        <item name="colorOnSecondary">@color/Azulnegro</item>
+        <item name="colorOnSecondary">@color/c_segundario</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

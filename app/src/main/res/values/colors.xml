@@ -2,16 +2,13 @@
 <resources>
     <!-- colores infor -->
     <color name="backgroundColor">#D6E2F0</color>
-    <color name="fondo">#0544E6</color>
-    <color name="backgroundBtn1">#0439BF</color>
-    <color name="backgroundBtn">#032680</color>
-    <color name="barra">#032680</color>
-    <color name="barraName">#011340</color>
-    <!-- otros -->
-    <color name="rojo">#DC3545</color>
+
     <color name="white">#FFFFFF</color>
-    <color name="gris">#F2F4F5</color>
-    <color name="AzulPlalido">#064EFE</color>
-    <color name="Azul">#2F5597</color>
-    <color name="Azulnegro">#032680</color>
+    <color name="c_primario">#27467D</color>
+    <color name="c_segundario">#2F5597</color>
+    <color name="c_terciario">#335CA3</color>
+
+    <color name="Barra">#4680E3</color>
+    <color name="BarraName">#1B3157</color>
+    <color name="AzulOscuro">#1B3157</color>
 </resources>

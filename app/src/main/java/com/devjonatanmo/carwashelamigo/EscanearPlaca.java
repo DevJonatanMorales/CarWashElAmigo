@@ -82,7 +82,7 @@ public class EscanearPlaca extends AppCompatActivity {
     private void BuscarPlaca(String numPlaca) {
         //obtenemos la fecha
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d HH:mm");
         strDate = sdf.format(c.getTime());
 
         BaseDatos root = new BaseDatos (EscanearPlaca.this,"CarWash",null,1);

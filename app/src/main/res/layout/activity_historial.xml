@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
@@ -19,13 +19,16 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/etPlannedDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/txtFecha"
-            android:textColor="@color/barraName"
-            android:inputType="textPersonName"
-            android:textSize="20dp" />
+            android:textColor="@color/BarraName"
+            android:ems="10"
+            android:textSize="20dp"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
+            android:maxLines="1" />
 
     </LinearLayout>
 
@@ -40,12 +43,12 @@
         android:text="@string/btnFiltrar"
         android:textSize="20dp"
         android:background="@drawable/styles_btn"
-        app:backgroundTint="@color/Azul" />
+        app:backgroundTint="@color/c_segundario" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:padding="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -53,14 +56,26 @@
         android:background="@drawable/fondo_recycler_view"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/txt_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/BarraName"
+            android:gravity="center"
+            android:text="Total de lavados: $0.00"
+            android:background="@drawable/fondo_total_lavados"
+            app:backgroundTint="@color/backgroundColor" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista"
-        android:layout_margin="8dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 
     </LinearLayout>
-
 
 </LinearLayout>

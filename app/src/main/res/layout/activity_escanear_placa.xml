@@ -34,7 +34,7 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginRight="25dp"
                 android:background="@drawable/styles_btn"
-                app:backgroundTint="@color/Azul"
+                app:backgroundTint="@color/c_segundario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginRight="25dp"
                 android:background="@drawable/styles_btn"
-                app:backgroundTint="@color/Azul"
+                app:backgroundTint="@color/c_segundario"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
