@@ -195,19 +195,17 @@ public class BaseDatos extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         Cursor fila = null;
 
-        int item = 0;
         String sql = "";
 
         sql = "SELECT t_historial.total " +
                 " FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa " +
-                "WHERE t_historial.fecha LIKE '%" + fecha + "%' AND t_placa.contador > 0";
+                "WHERE t_historial.total != 'lavado gratis' AND t_historial.fecha LIKE '%" + fecha + "%'";
 
         fila = db.rawQuery(sql, null);
 
         if (fila.moveToFirst() == true) {
 
             do {
-
                 total += Double.parseDouble(fila.getString(0));
 
             } while (fila.moveToNext());

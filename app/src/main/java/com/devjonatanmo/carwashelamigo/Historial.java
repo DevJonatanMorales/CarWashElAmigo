@@ -46,6 +46,8 @@ public class Historial extends AppCompatActivity {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
             Fecha_actual = sdf.format(c.getTime());
 
+            etPlannedDate.setText(Fecha_actual);
+
             lista.setLayoutManager(new LinearLayoutManager(this));
             objRegistro = new BaseDatos(Historial.this, "", null, 1);
 
@@ -80,22 +82,25 @@ public class Historial extends AppCompatActivity {
                 try {
                     String fecha = etPlannedDate.getText().toString();
 
-                    lista.setLayoutManager(new LinearLayoutManager(Historial.this));
-                    objRegistro = new BaseDatos(Historial.this, "", null, 1);
-
-                    listaArrayRegistro= new ArrayList<>();
-
-                    if (objRegistro.filtar_registro(fecha).isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "No hay datos que mostrar", Toast.LENGTH_LONG).show();
-
+                    if(fecha.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Seleccione una fecha", Toast.LENGTH_LONG).show();
                     } else {
+                        lista.setLayoutManager(new LinearLayoutManager(Historial.this));
+                        objRegistro = new BaseDatos(Historial.this, "", null, 1);
 
-                        txt_total.setText("Total de lavados: $" + objRegistro.total_lavados(fecha));
-                        ListaRegistroAdapter listaRegistroAdapter = new ListaRegistroAdapter(objRegistro.filtar_registro(fecha));
-                        lista.setAdapter(listaRegistroAdapter);
+                        listaArrayRegistro= new ArrayList<>();
 
+                        if (objRegistro.filtar_registro(fecha).isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "No hay datos que mostrar", Toast.LENGTH_LONG).show();
+
+                        } else {
+
+                            txt_total.setText("Total de lavados: $" + objRegistro.total_lavados(fecha));
+                            ListaRegistroAdapter listaRegistroAdapter = new ListaRegistroAdapter(objRegistro.filtar_registro(fecha));
+                            lista.setAdapter(listaRegistroAdapter);
+
+                        }
                     }
-
 
                 } catch (Exception exception) {
                     Toast.makeText(getApplicationContext(), "Error XD " + exception.toString(), Toast.LENGTH_LONG);
