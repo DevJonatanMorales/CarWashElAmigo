@@ -40,6 +40,9 @@ public class Factura extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
         btnImprimir = findViewById(R.id.btnImprimir);
 
+        /*==============================================================================================
+        ======================================RECIBIMOS DATOS===========================================
+        ==============================================================================================*/
         try {
             txtInfoPlaca.setText(getIntent().getStringExtra("placaInfo"));
 
@@ -83,6 +86,9 @@ public class Factura extends AppCompatActivity {
         });
     }
 
+    /*==============================================================================================
+    ======================================CALCULAR PAGO=============================================
+    ==============================================================================================*/
     protected void CalcularPago() {
         float precio, descuento, decuentoFracion, totalDescuento, totalInt;
         descuento = Integer.parseInt(etxtDescuento.getText().toString());
@@ -105,6 +111,9 @@ public class Factura extends AppCompatActivity {
         }
     }
 
+    /*==============================================================================================
+    ======================================PROCESAMOS DATOS==========================================
+    ==============================================================================================*/
     protected void ProcesarDatos() {
         objRegistro = new BaseDatos(getApplicationContext(), "", null, 1);
 
@@ -168,6 +177,9 @@ public class Factura extends AppCompatActivity {
         }
     }
 
+    /*==============================================================================================
+    ======================================CLEAR DATA============================================
+    ==============================================================================================*/
     protected void ClearData() {
         txtInfoPlaca.setText("");
         etxtPrecio.setText("");
