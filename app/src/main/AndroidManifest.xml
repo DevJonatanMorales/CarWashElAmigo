@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.devjonatanmo.carwashelamigo">
-    
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,14 +21,6 @@
             tools:replace="screenOrientation" />
         <activity
             android:name=".EscaneoManual"
-            android:exported="true"
-            android:parentActivityName=".EscanearPlaca">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".EscanearPlaca" />
-        </activity>
-        <activity
-            android:name=".EscanearPlaca"
             android:exported="true"
             android:parentActivityName=".MainActivity">
             <meta-data

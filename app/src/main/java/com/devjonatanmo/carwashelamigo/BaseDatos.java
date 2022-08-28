@@ -215,5 +215,29 @@ public class BaseDatos extends SQLiteOpenHelper {
         return total;
     }
 
+    public  int CountLavadoGratis (String fecha) {
+        int total = 0;
 
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor fila = null;
+
+        String sql = "";
+
+        sql = "SELECT COUNT(t_historial.total) " +
+                " FROM t_placa INNER JOIN t_historial ON t_placa.id_placa=t_historial.fk_placa " +
+                "WHERE t_historial.total = 'lavado gratis' AND t_historial.fecha LIKE '%" + fecha + "%'";
+
+        fila = db.rawQuery(sql, null);
+
+        if (fila.moveToFirst() == true) {
+
+            do {
+                total += Double.parseDouble(fila.getString(0));
+
+            } while (fila.moveToNext());
+
+        }
+
+        return total;
+    }
 }

@@ -1,34 +1,30 @@
 <resources>
     <string name="app_name">Car Wash EL Amigo</string>
     <!-- main -->
-    <string name="btnCobro">Escanear</string>
+    <string name="btnAutomatico">Automático</string>
     <string name="btnHistorial">Historial</string>
+    <string name="btnManual">Manual</string>
 
     <!-- historial -->
+    <string name="lblFecha">Fecha:</string>
     <string name="btnFiltrar">Filtrar</string>
-    <string name="txtFecha">Ingresar fecha</string>
-    <string name="btnExit">Inicio</string>
+    <string name="txtFecha">Seleccione una fecha</string>
 
     <!-- factura -->
+    <string name="txtLavado">LAVADO:</string>
+    <string name="txtHistorial">HISTORIAL:</string>
     <string name="txtPrecio">PRECIO $:</string>
     <string name="txtDescuento">Descuento %:</string>
     <string name="txtTotal">txtTotal</string>
     <string name="etxtPrecio">Ingrese el precio</string>
     <string name="etxtDecueno">Ingrese descuento</string>
     <string name="etxtTotal">Total a pagar: $0.00</string>
-    <string name="btnCalcular">Calcular</string>
     <string name="btnGuardar">Guardar</string>
     <string name="btnImprimir">Imprimir</string>
 
-    <!-- Escanear -->
-    <string name="btnAutomatico">Automatico</string>
-    <string name="btnManual">Manual</string>
-
     <!-- Escanear Manual -->
+    <string name="lblPlaca">Número de placa</string>
     <string name="txtPlaca">Ingrese el número de placa</string>
-    <string name="btnPlaca">Buscar</string>
+    <string name="btnPlaca">Ingresar</string>
 
-    <string name="prueba">
-        fecha de lavado: 2022-08-02 21:15
-        </string>
 </resources>

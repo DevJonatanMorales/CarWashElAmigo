@@ -13,37 +13,38 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/fondo_etxt"
         android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lblFecha"
+            android:textColor="@color/BarraName"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etPlannedDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/BarraName"
             android:ems="10"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/txtFecha"
             android:textSize="20dp"
+            android:padding="10dp"
+            android:background="@drawable/fondo_txt"
             android:inputType="date"
             android:focusable="false"
             android:clickable="true"
             android:maxLines="1" />
-
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnFiltrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        android:padding="12dp"
-        android:text="@string/btnFiltrar"
-        android:textSize="20dp"
-        android:background="@drawable/styles_btn"
-        app:backgroundTint="@color/c_segundario" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,11 +64,11 @@
             android:padding="10dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/BarraName"
+            android:textColor="@color/white"
             android:gravity="center"
             android:text="Total de lavados: $0.00"
             android:background="@drawable/fondo_total_lavados"
-            app:backgroundTint="@color/backgroundColor" />
+            android:backgroundTint="@color/c_terciario"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista"

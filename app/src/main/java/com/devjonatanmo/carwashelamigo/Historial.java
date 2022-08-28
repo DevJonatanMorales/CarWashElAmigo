@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +24,6 @@ import java.util.Calendar;
 
 public class Historial extends AppCompatActivity {
     BaseDatos objRegistro;
-    Button btnFiltrar;
     EditText etPlannedDate;
     TextView txt_total;
     String Fecha_actual;
@@ -35,7 +36,6 @@ public class Historial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial);
 
-        btnFiltrar = findViewById(R.id.btnFiltrar);
         etPlannedDate = findViewById(R.id.etPlannedDate);
         txt_total = findViewById(R.id.txt_total);
         lista = findViewById(R.id.lista);
@@ -55,11 +55,15 @@ public class Historial extends AppCompatActivity {
 
             if (objRegistro.filtar_registro(Fecha_actual).isEmpty()) {
                 Toast.makeText(getApplicationContext(), "No hay datos que mostrar", Toast.LENGTH_LONG).show();
+                txt_total.setText("Total en lavados: $0.00" +
+                        "\nLavados gratis: 0");
 
             } else {
                 ListaRegistroAdapter listaRegistroAdapter = new ListaRegistroAdapter(objRegistro.filtar_registro(Fecha_actual));
                 lista.setAdapter(listaRegistroAdapter);
-                txt_total.setText("Total de lavados: $" + objRegistro.total_lavados(Fecha_actual));
+
+                txt_total.setText("Total en lavados: $" + objRegistro.total_lavados(Fecha_actual) +
+                        "\nLavados gratis: " + objRegistro.CountLavadoGratis(Fecha_actual));
             }
 
 
@@ -76,35 +80,40 @@ public class Historial extends AppCompatActivity {
             }
         });
 
-        btnFiltrar.setOnClickListener(new View.OnClickListener() {
+        etPlannedDate.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                try {
-                    String fecha = etPlannedDate.getText().toString();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                    if(fecha.isEmpty()){
-                        Toast.makeText(getApplicationContext(), "Seleccione una fecha", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String fecha = etPlannedDate.getText().toString();
+
+                if(fecha.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Seleccione una fecha", Toast.LENGTH_LONG).show();
+                } else {
+                    lista.setLayoutManager(new LinearLayoutManager(Historial.this));
+                    objRegistro = new BaseDatos(Historial.this, "", null, 1);
+
+                    listaArrayRegistro= new ArrayList<>();
+
+                    if (objRegistro.filtar_registro(fecha).isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "No hay datos que mostrar", Toast.LENGTH_SHORT).show();
+
                     } else {
-                        lista.setLayoutManager(new LinearLayoutManager(Historial.this));
-                        objRegistro = new BaseDatos(Historial.this, "", null, 1);
 
-                        listaArrayRegistro= new ArrayList<>();
+                        txt_total.setText("Total en lavados: $" + objRegistro.total_lavados(fecha) +
+                                "\nLavados gratis: " + objRegistro.CountLavadoGratis(fecha));
+                        ListaRegistroAdapter listaRegistroAdapter = new ListaRegistroAdapter(objRegistro.filtar_registro(fecha));
+                        lista.setAdapter(listaRegistroAdapter);
 
-                        if (objRegistro.filtar_registro(fecha).isEmpty()) {
-                            Toast.makeText(getApplicationContext(), "No hay datos que mostrar", Toast.LENGTH_LONG).show();
-
-                        } else {
-
-                            txt_total.setText("Total de lavados: $" + objRegistro.total_lavados(fecha));
-                            ListaRegistroAdapter listaRegistroAdapter = new ListaRegistroAdapter(objRegistro.filtar_registro(fecha));
-                            lista.setAdapter(listaRegistroAdapter);
-
-                        }
                     }
-
-                } catch (Exception exception) {
-                    Toast.makeText(getApplicationContext(), "Error XD " + exception.toString(), Toast.LENGTH_LONG);
                 }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });

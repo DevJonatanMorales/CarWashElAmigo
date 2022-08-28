@@ -22,7 +22,7 @@ public class EscaneoManual extends AppCompatActivity {
     //dase de datos
     private Cursor fila;
 
-    String accion = "nuevo", placa, placaInfo, strDate;
+    String accion = "nuevo", placa, historial, placaInfo, strDate;
     int idPlaca = 0, contador;
 
     @Override
@@ -50,13 +50,12 @@ public class EscaneoManual extends AppCompatActivity {
 
 
     }
-
-
+    
     //buscamos la placa en la bd
     private void BuscarPlaca(String numPlaca) {
         //obtenemos la fecha
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d HH:mm");
         strDate = sdf.format(c.getTime());
 
         BaseDatos root = new BaseDatos (EscaneoManual.this,"CarWash",null,1);
@@ -81,12 +80,11 @@ public class EscaneoManual extends AppCompatActivity {
                         accion = "update";
                     }
 
-                    String historial = "";
                     int item = 0;
 
                     for (int i = 1; i <= fila.getCount(); i++ ){
                         if (item == 0) {
-                            historial += "\nfecha de lavado: " + fila.getString(3);
+                            historial = "fecha de lavado: " + fila.getString(3);
                             item = 1;
 
                         }else if (fila.moveToNext()) {
@@ -95,16 +93,15 @@ public class EscaneoManual extends AppCompatActivity {
                         }
 
                     }
-
-
-                    placaInfo = "Número de placa: " + placa + "\nfecha: " + strDate + "\nhistorial: " + historial;
+                    placaInfo = "Número de placa: " + placa + "\nfecha: " + strDate;
 
                 }
 
             } else {
                 placa = numPlaca;
-                placaInfo = "Número de placa: " + numPlaca + "\n" + //agregamos la descripcion
-                        "placa sin historial \nfecha: " + strDate;
+                placaInfo = "Número de placa: " + numPlaca + //agregamos la descripcion
+                        "\nfecha: " + strDate;
+                historial = "Sin historial";
             }
 
             EnviarDatos();
@@ -121,10 +118,12 @@ public class EscaneoManual extends AppCompatActivity {
             intent.putExtra("numPlaca", placa);
             intent.putExtra("idPlaca", idPlaca);
             intent.putExtra("placaInfo", placaInfo);
+            intent.putExtra("historial", historial);
             intent.putExtra("accion", accion);
             intent.putExtra("contador", contador);
             intent.putExtra("nuencaFecha", strDate);
 
+            txtPlaca.setText("");
             startActivity(intent);
         } catch (Exception ex) {
             Toast.makeText(getApplicationContext(),"Error al enviar: " + ex.getMessage().toString(), Toast.LENGTH_LONG).show();
